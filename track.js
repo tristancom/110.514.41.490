@@ -1,32 +1,11 @@
-function logIP() {
-    // 1. Dapatkan IP pengunjung
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            const ip = data.ip;
-
-            // 2. Kirim data ke FormSubmit (gunakan /el/nivero)
-            const formData = new FormData();
-            formData.append('ip', ip);
-            formData.append('userAgent', navigator.userAgent);
-            formData.append('waktu', new Date().toLocaleString());
-
-            fetch('https://formsubmit.co/el/nivero', {
-                method: "POST",
-                body: formData
-            })
-            .then(response => {
-                if (!response.ok) throw new Error("Gagal mengirim data");
-                return response.json();
-            })
-            .then(data => {
-                console.log("Sukses:", data);
-                // 3. Redirect setelah berhasil (opsional)
-                window.location.href = "https://example.com/download";
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Terjadi error, silakan coba lagi!");
-            });
-        });
+function trackIP() {
+  fetch('https://api.ipify.org?format=json')
+    .then(res => res.json())
+    .then(data => {
+      // Kirim data ke Google Apps Script
+      fetch(`https://script.google.com/macros/s/AKfycbxfW9GSweTyvFiMtvM4mC8rAlD2Je6xPO7XGpOo_88Hz-pP-cjudu9W5fjqysHjs2EU9g/exec?ip=${data.ip}&ua=${encodeURIComponent(navigator.userAgent)}`);
+      
+      // Redirect pengunjung (opsional)
+      window.location.href = "https://example.com/download";
+    });
 }
