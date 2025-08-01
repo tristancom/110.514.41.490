@@ -1,12 +1,11 @@
 function logIP() {
-    // Dapatkan IP pengunjung
     fetch('https://api.ipify.org?format=json')
         .then(response => response.json())
         .then(data => {
             const ip = data.ip;
             
             // Kirim IP ke FormSubmit
-            fetch('https://formsubmit.co/el/nivero', {
+            fetch('https://formsubmit.co/ajax/EMAIL_ANDA@gmail.com', {
                 method: "POST",
                 headers: { 
                     'Content-Type': 'application/json',
@@ -19,7 +18,7 @@ function logIP() {
                 })
             });
             
-            // Redirect setelah mengirim data
-            window.location.href = "https://youtube.com/";
+            // Tampilkan pesan tanpa redirect
+            alert("IP Anda telah tercatat. Terima kasih!"); // ❌ Redirect tidak dipakai
         });
 }
