@@ -11,7 +11,7 @@ function trackIP() {
         mode: 'no-cors'
       })
       .then(() => {
-        window.location.href = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQjPdejqvFg4zR-nhOBS5sRFZwlh4MN7J97S4z1KrBSiSjNtbft2uF_j0HOxpX3UlFgfXIikOWctTC_/pubhtml?gid=0&single=true"; // Redirect setelah kirim data
+        window.location.href = "https://docs.google.com/spreadsheets/d/1YLdYLm-KngasKdP0iDo9slkh1A3yR07HZkfp8o9feXM/edit?usp=sharing"; // Redirect setelah kirim data
       })
       .catch(err => console.error("Error:", err));
     });
